@@ -65,6 +65,17 @@ object Build : BuildType({
             runnerArgs = "-Dmaven.test.failure.ignore=true"
             userSettingsSelection = "settings.xml"
         }
+        maven {
+            name = "clean deploy (1)"
+            id = "Maven2_1_1"
+
+            conditions {
+                contains("teamcity.build.branch", "master")
+            }
+            goals = "clean deploy"
+            runnerArgs = "-Dmaven.test.failure.ignore=true"
+            userSettingsSelection = "settings.xml"
+        }
     }
 
     triggers {
